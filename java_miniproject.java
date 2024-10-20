@@ -1,4 +1,4 @@
-//author: P.Sai Shanmukha
+//author: PSS
 import java.util.Scanner;
 class java_miniproject {
     static int[] user_input() {
