@@ -15,7 +15,7 @@ class java_miniproject {
         String x = sc.nextLine();
         int sel = Integer.parseInt(x);
         if(sel!=4) {
-            System.out.print("Enter DOB/AGE: ");
+            System.out.print("Enter DOB: ");
         }
         else{
             System.out.print("Enter AGE: ");
