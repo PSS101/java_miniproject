@@ -103,7 +103,7 @@ class java_miniproject {
                     leap_days++;
                 }
             }
-            if (y >= present_year && d > present_date) {
+            if (y >= present_year) {
                 years = 0;
                 months = 0;
                 days = 0;
