@@ -24,7 +24,8 @@ class java_miniproject {
         System.out.println("----------------------------------------------------------");
         String[] input = new String[3];
         if(inp.contains("-") || inp.contains("/")){
-            input = inp.split("-|\\/");
+            input = inp.trim().split("-|\\/");
+
         }
         else{
             System.out.println("Enter a valid dlc!");
@@ -36,29 +37,37 @@ class java_miniproject {
         int y = 0;
         int m = 0;
         int d = 0;
-        switch (sel) {
-            case 1:
-                dob[0] = Integer.parseInt(input[0]);
-                dob[1] = Integer.parseInt(input[1]);
-                dob[2] = Integer.parseInt(input[2]);
-                break;
-            case 2:
-                dob[0] = Integer.parseInt(input[2]);
-                dob[1] = Integer.parseInt(input[1]);
-                dob[2] = Integer.parseInt(input[0]);
-                break;
-            case 3:
-                dob[0] = Integer.parseInt(input[2]);
-                dob[1] = Integer.parseInt(input[0]);
-                dob[2] = Integer.parseInt(input[1]);
-                break;
-            case 4:
-                dob[0] = Integer.parseInt(input[0]);
-                dob[1] = Integer.parseInt(input[1]);
-                dob[2] = Integer.parseInt(input[2]);
-                break;
+        try {
+            switch (sel) {
+                case 1:
+                    dob[0] = Integer.parseInt(input[0]);
+                    dob[1] = Integer.parseInt(input[1]);
+                    dob[2] = Integer.parseInt(input[2]);
+                    break;
+                case 2:
+                    dob[0] = Integer.parseInt(input[2]);
+                    dob[1] = Integer.parseInt(input[1]);
+                    dob[2] = Integer.parseInt(input[0]);
+                    break;
+                case 3:
+                    dob[0] = Integer.parseInt(input[2]);
+                    dob[1] = Integer.parseInt(input[0]);
+                    dob[2] = Integer.parseInt(input[1]);
+                    break;
+                case 4:
+                    dob[0] = Integer.parseInt(input[0]);
+                    dob[1] = Integer.parseInt(input[1]);
+                    dob[2] = Integer.parseInt(input[2]);
+                    break;
+            }
         }
-        dob[3] = (sel==4) ? 1 : 0;
+        catch (NumberFormatException | ArrayIndexOutOfBoundsException err){
+            System.out.println("Enter a valid input!");
+            user_input();
+        }
+            dob[3] = (sel == 4) ? 1 : 0;
+
+
         return dob;
     }
 
@@ -68,7 +77,6 @@ class java_miniproject {
         boolean leap_year;
         while (valid == 0) {
             input = user_input();
-
             leap_year = ((input[0] % 4 == 0) && (input[0] % 100 != 0 || input[0] % 400 == 0));
             if (input[3] == 0) {
                 if ((input[2] == 29 && !leap_year) || (input[1] % 2 == 0 && input[1] > 30 && input[1] != 2) || (input[1] % 2 == 0 && input[1] > 30) || (input[0] < 0 || input[1] < 0 || input[2] < 0)) {
