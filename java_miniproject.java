@@ -12,8 +12,16 @@ class java_miniproject {
         System.out.println("Allowed dlc are '-' or '/' ");
         System.out.println("----------------------------------------------------------");
         System.out.print("Enter selection: ");
-        String x = sc.nextLine();
-        int sel = Integer.parseInt(x);
+        String x = sc.nextLine();;
+        int sel=0;
+        try {
+            sel = Integer.parseInt(x);
+        }
+        catch(NumberFormatException err){
+            System.out.println("Enter a valid selection!");
+            user_input();
+        }
+
         if(sel!=4) {
             System.out.print("Enter DOB/AGE: ");
         }
@@ -32,11 +40,6 @@ class java_miniproject {
             user_input();
         }
 
-        int i = 0;
-        int count = 0;
-        int y = 0;
-        int m = 0;
-        int d = 0;
         try {
             switch (sel) {
                 case 1:
@@ -66,7 +69,6 @@ class java_miniproject {
             user_input();
         }
             dob[3] = (sel == 4) ? 1 : 0;
-
 
         return dob;
     }
