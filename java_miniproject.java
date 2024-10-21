@@ -12,7 +12,7 @@ class java_miniproject {
         System.out.println("Allowed dlc are '-' or '/' ");
         System.out.println("----------------------------------------------------------");
         System.out.print("Enter selection: ");
-        String x = sc.nextLine();;
+        String x = sc.nextLine();
         int sel=0;
         try {
             sel = Integer.parseInt(x);
