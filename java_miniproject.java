@@ -1,4 +1,4 @@
-//author: P.Sai Shanmukha
+//author: PSS
 import java.util.Scanner;
 class java_miniproject {
     static int[] user_input() {
@@ -23,7 +23,7 @@ class java_miniproject {
         }
 
         if(sel!=4) {
-            System.out.print("Enter DOB/AGE: ");
+            System.out.print("Enter DOB: ");
         }
         else{
             System.out.print("Enter AGE: ");
