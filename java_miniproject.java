@@ -143,10 +143,10 @@ class java_miniproject {
                     days = present_date - d;
                     months = present_month - m;
                 } else {
-                    if (m % 2 == 0) {
+                    if (m==9 || m==11 || m % 2 == 0) {
                         days = (30 - d) + present_date;
                         months = present_month - m - 1;
-                    } else if (m % 2 == 1) {
+                    } else if (m == 8 || m==10 || m==12 || m % 2 == 1) {
                         days = (31 - d) + present_date;
                         months = present_month - m - 1;
                     } else if (m == 2) {
