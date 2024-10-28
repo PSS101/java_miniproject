@@ -81,7 +81,7 @@ class java_miniproject {
             input = user_input();
             leap_year = ((input[0] % 4 == 0) && (input[0] % 100 != 0 || input[0] % 400 == 0));
             if (input[3] == 0) {
-                if ((input[2] == 29 && !leap_year) || (input[1] % 2 == 0 && input[2] > 30 && input[1] != 2) || (input[1] % 2 != 0 && input[2] > 31 && input[1]!=2 )|| (input[0] < 0 || input[1] < 0 || input[2] < 0)) {
+                if ((input[2] == 29 && !leap_year) || ((input[1]==9 || input[1]==11 || input[1] % 2 == 0) && input[2] > 30 && input[1] != 2) || (( input[1] == 8 || input[1]==10 || input[1]==12 || input[1] % 2 != 0) && input[2] > 31 && input[1]!=2 )|| (input[0] < 0 || input[1] < 0 || input[2] < 0)) {
                     System.out.println("Enter a valid DOB!");
                     input = user_input();
                 }
