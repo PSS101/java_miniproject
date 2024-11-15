@@ -1,9 +1,10 @@
-//author PSS
 import java.util.Scanner;
 class java_miniproject{
-static int[] user_input() {
+    static int[] user_input() {
         int[] dob = new int[4];
+
         Scanner sc = new Scanner(System.in);
+
         System.out.println("----------------------------------------------------------");
         System.out.println("Enter 1 to select DOB= YYdlcMMdlcDD (International format)");
         System.out.println("Enter 2 to select DOB= DDdlcMMdlcYY (Indian format)");
@@ -13,31 +14,34 @@ static int[] user_input() {
         System.out.println("----------------------------------------------------------");
         System.out.print("Enter selection: ");
         String x = sc.nextLine();
-        int sel=0;
+        int sel = 0;
         try {
             sel = Integer.parseInt(x);
-        }
-        catch(NumberFormatException err){
+            if (sel > 4) {
+                System.out.println("Enter a valid selection!");
+                System.exit(0);
+
+            }
+        } catch (NumberFormatException err) {
             System.out.println("Enter a valid selection!");
-            user_input();
+            System.exit(0);
+
         }
 
-        if(sel!=4) {
+        if (sel != 4) {
             System.out.print("Enter DOB: ");
-        }
-        else{
+        } else {
             System.out.print("Enter AGE: ");
         }
         String inp = sc.nextLine();
         System.out.println("----------------------------------------------------------");
         String[] input = new String[3];
-        if(inp.contains("-") || inp.contains("/")){
+        if (inp.contains("-") || inp.contains("/")) {
             input = inp.trim().split("-|\\/");
 
-        }
-        else{
+        } else {
             System.out.println("Enter a valid dlc!");
-            user_input();
+            System.exit(0);
         }
 
         try {
@@ -63,10 +67,9 @@ static int[] user_input() {
                     dob[2] = Integer.parseInt(input[2]);
                     break;
             }
-        }
-        catch (NumberFormatException | ArrayIndexOutOfBoundsException err){
+        } catch (NumberFormatException | ArrayIndexOutOfBoundsException err) {
             System.out.println("Enter a valid input!");
-            user_input();
+            System.exit(0);
         }
         dob[3] = (sel == 4) ? 1 : 0;
 
@@ -77,29 +80,22 @@ static int[] user_input() {
         int valid = 0;
         int[] input = new int[4];
         boolean leap_year;
-        while (valid == 0) {
-            input = user_input();
-            leap_year = ((input[0] % 4 == 0) && (input[0] % 100 != 0 || input[0] % 400 == 0));
-            if (input[3] == 0) {
-                if ((input[2] == 29 && !leap_year) || ((input[1]==9 || input[1]==11 || input[1] % 2 == 0) && input[2] > 30 && input[1] != 2) || (( input[1] == 8 || input[1]==10 || input[1]==12 || input[1] % 2 != 0) && input[2] > 31 && input[1]!=2 )|| (input[0] < 0 || input[1] < 0 || input[2] < 0)) {
-                    System.out.println("Enter a valid DOB!");
-                    input = user_input();
-                }
-                else {
-                    valid = 1;
-                }
+        input = user_input();
+        leap_year = ((input[0] % 4 == 0) && (input[0] % 100 != 0 || input[0] % 400 == 0));
+        if (input[3] == 0) {
+            if ((input[2] == 29 && !leap_year) || ((input[1]==9 || input[1]==11 || input[1] % 2 == 0) && input[2] > 30 && input[1] != 2) || (( input[1] == 8 || input[1]==10 || input[1]==12 || input[1] % 2 != 0) && input[2] > 31 && input[1]!=2 )|| (input[0] < 0 || input[1] < 0 || input[2] < 0)) {
+                System.out.println("Enter a valid DOB!");
+                System.exit(0);
             }
-            else if(input[3]==1){
-                if((input[0] < 0 || input[1] < 0 || input[2] < 0)){
-                    System.out.println("Enter a valid AGE!");
-                    input = user_input();
-                }
-                else {
-                    valid = 1;
-                }
-            }
-
         }
+        else if(input[3]==1){
+            if((input[0] < 0 || input[1] < 0 || input[2] < 0)){
+                System.out.println("Enter a valid AGE!");
+                System.exit(0);
+            }
+        }
+
+
         return input;
 
     }
@@ -110,7 +106,7 @@ static int[] user_input() {
         int m = input[1];
         int d = input[2];
         int present_year = 2024;
-        int present_date = 15;
+        int present_date = 16;
         int present_month = 11;
         int years = 0;
         int months = 0;
@@ -126,7 +122,8 @@ static int[] user_input() {
             years = 0;
             months = 0;
             days = 0;
-        } else {
+        }
+        else {
             if (m < present_month) {
                 years = present_year - y;
             }
@@ -137,7 +134,7 @@ static int[] user_input() {
                 }
                 else {
                     if(d<present_date){
-                    years = present_year - y;}
+                        years = present_year - y;}
                     else{
                         years = present_year-y-1;
                     }
@@ -171,6 +168,7 @@ static int[] user_input() {
                 }
             }
         }
+        days++;
         if(input[3]==0) {
             System.out.println("Your age is: " + years + "years " + months + "months " + days + "days");
         }
@@ -180,3 +178,4 @@ static int[] user_input() {
         System.out.println("----------------------------------------------------------");
     }
 }
+
