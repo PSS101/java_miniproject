@@ -68,7 +68,7 @@ class java_miniproject {
             System.out.println("Enter a valid input!");
             user_input();
         }
-            dob[3] = (sel == 4) ? 1 : 0;
+        dob[3] = (sel == 4) ? 1 : 0;
 
         return dob;
     }
@@ -116,52 +116,62 @@ class java_miniproject {
         int months = 0;
         int days = 0;
         int leap_days = 0;
-            int i = 0;
-            for (i = y; i <= present_year; i++) {
-                if ((i % 4 == 0) && (i % 100 != 0 || i % 400 == 0)) {
-                    leap_days++;
+        int i = 0;
+        for (i = y; i <= present_year; i++) {
+            if ((i % 4 == 0) && (i % 100 != 0 || i % 400 == 0)) {
+                leap_days++;
+            }
+        }
+        if (y >= present_year) {
+            years = 0;
+            months = 0;
+            days = 0;
+        } else {
+            if (m < present_month) {
+                years = present_year - y;
+            }
+            else {
+                if (present_year != y && present_month != m) {
+                    years = present_year - y - 1;
+                    present_month = present_month + 12;
+                } else {
+                    if(d<present_date){
+                    years = present_year - y;}
+                    else{
+                        years = present_year-y-1;
+                    }
+                    present_month = present_month;
                 }
             }
-            if (y >= present_year) {
-                years = 0;
-                months = 0;
-                days = 0;
-            } else {
-                if (m < present_month) {
-                    years = present_year - y;
-                } else {
-                    if (present_year != y && present_month != m) {
-                        years = present_year - y - 1;
-                        present_month = present_month + 12;
-                    } else {
-                        years = present_year - y;
-                        present_month = present_month;
-                    }
-                }
 
-                if (d <= present_date) {
-                    days = present_date - d;
-                    months = present_month - m;
-                } else {
-                    if (m==9 || m==11 || m % 2 == 0) {
+            if (d <= present_date) {
+                days = present_date - d;
+                months = present_month - m;
+            } else {
+                if(m!=present_month) {
+                    if (m == 9 || m == 11 || m % 2 == 0) {
                         days = (30 - d) + present_date;
-                        months = present_month - m - 1;
-                    } else if (m == 8 || m==10 || m==12 || m % 2 == 1) {
-                        days = (31 - d) + present_date;
-                        months = present_month - m - 1;
-                    } else if (m == 2) {
-                        days = (28 - d) + present_date + leap_days;
-                        months = present_month - m - 1;
                     }
+                    else if (m == 8 || m == 10 || m == 12 || m % 2 == 1) {
+                        days = (31 - d) + present_date;
+                    }
+                    else if (m == 2) {
+                        days = (28 - d) + present_date + leap_days;
+                    }
+                    months = present_month - m - 1;
+                }
+                else{
+                    months = present_month;
+                    days = (30 - d) + present_date;
                 }
             }
-            if(input[3]==0) {
-                System.out.println("Your age is: " + years + "years " + months + "months " + days + "days");
-            }
-            else{
-                System.out.println("Your DOB is: "+days+"/"+months+"/"+years);
-            }
-            System.out.println("----------------------------------------------------------");
+        }
+        if(input[3]==0) {
+            System.out.println("Your age is: " + years + "years " + months + "months " + days + "days");
+        }
+        else{
+            System.out.println("Your DOB is: "+days+"/"+months+"/"+years);
+        }
+        System.out.println("----------------------------------------------------------");
     }
 }
-
