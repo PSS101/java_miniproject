@@ -168,8 +168,8 @@ class java_miniproject{
                 }
             }
         }
-        days++;
         if(input[3]==0) {
+            days++;
             System.out.println("Your age is: " + years + "years " + months + "months " + days + "days");
         }
         else{
