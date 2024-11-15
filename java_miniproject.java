@@ -110,8 +110,8 @@ class java_miniproject {
         int m = input[1];
         int d = input[2];
         int present_year = 2024;
-        int present_date = 20;
-        int present_month = 10;
+        int present_date = 15;
+        int present_month = 11;
         int years = 0;
         int months = 0;
         int days = 0;
