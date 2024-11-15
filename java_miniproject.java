@@ -1,7 +1,7 @@
-//author: PSS
+//author PSS
 import java.util.Scanner;
-class java_miniproject {
-    static int[] user_input() {
+class java_miniproject{
+static int[] user_input() {
         int[] dob = new int[4];
         Scanner sc = new Scanner(System.in);
         System.out.println("----------------------------------------------------------");
@@ -134,19 +134,24 @@ class java_miniproject {
                 if (present_year != y && present_month != m) {
                     years = present_year - y - 1;
                     present_month = present_month + 12;
-                } else {
+                }
+                else {
                     if(d<present_date){
                     years = present_year - y;}
                     else{
                         years = present_year-y-1;
                     }
-                    present_month = present_month;
                 }
             }
 
             if (d <= present_date) {
                 days = present_date - d;
-                months = present_month - m;
+                if(present_month==m){
+                    months=present_month;
+                }
+                else {
+                    months = present_month - m;
+                }
             } else {
                 if(m!=present_month) {
                     if (m == 9 || m == 11 || m % 2 == 0) {
